@@ -10,8 +10,12 @@ def load_sops():
         documents[path.stem] = path.read_text(encoding="utf-8")
 
     return documents
+
+
 def search_sops(query):
-    query_words = query.lower().split()
+    query = query.lower().strip()
+    query_words = query.split()
+
     results = []
 
     for name, text in load_sops().items():
@@ -19,13 +23,23 @@ def search_sops(query):
 
         score = 0
 
+        # Exact topic/name match gets highest priority
+        topic_name = name.replace("_", " ")
+
+        if query == topic_name:
+            score += 100
+
+        # Individual query words
         for word in query_words:
+            if word in topic_name:
+                score += 10
+
             if word in text_lower:
                 score += 1
 
         if score > 0:
             results.append((score, name, text))
 
-    results.sort(reverse=True)
+    results.sort(key=lambda x: x[0], reverse=True)
 
     return results
