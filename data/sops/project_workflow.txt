@@ -1,0 +1,13 @@
+PROJECT WORKFLOW SOP
+
+Employees must understand the assigned project requirements before beginning development work.
+
+Project tasks should be tracked using the approved project management system.
+
+Employees should communicate task progress and blockers to the relevant team members.
+
+Changes to important project requirements should be documented and communicated to the team.
+
+Completed work should be reviewed and tested before it is marked as complete.
+
+Employees should maintain appropriate documentation for their project work.

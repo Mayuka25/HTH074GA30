@@ -1,0 +1,11 @@
+DATA SECURITY SOP
+
+Employees must protect company information from unauthorized access.
+
+Confidential files must be stored only in approved company storage systems.
+
+Employees must not share confidential company information with unauthorized people.
+
+Employees must lock their workstation when leaving it unattended.
+
+Any suspected data security incident must be reported immediately to the appropriate security or IT team.
