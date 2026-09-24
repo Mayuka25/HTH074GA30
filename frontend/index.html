@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OnboardAI | Adaptive Corporate Learning Coach</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">✦</div>
+
+                <div>
+                    <h2>OnboardAI</h2>
+                    <span>Learning Coach</span>
+                </div>
+            </div>
+
+            <nav class="navigation">
+
+                <button class="nav-item active" onclick="showSection('dashboard')">
+                    <span>⌂</span>
+                    Dashboard
+                </button>
+
+                <button class="nav-item" onclick="showSection('learn')">
+                    <span>◈</span>
+                    Learn
+                </button>
+
+                <button class="nav-item" onclick="showSection('quiz')">
+                    <span>✓</span>
+                    Assessment
+                </button>
+
+                <button class="nav-item" onclick="showSection('progress')">
+                    <span>◒</span>
+                    Progress
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="ai-status">
+                    <div class="status-dot"></div>
+
+                    <div>
+                        <strong>AI Coach Online</strong>
+                        <small>Knowledge base connected</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">EMPLOYEE ONBOARDING</p>
+
+                    <h1 id="page-title">
+                        Welcome back, Alex 👋
+                    </h1>
+                </div>
+
+                <div class="employee">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Alex</strong>
+                        <small>New Employee</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="section active-section">
+
+                <div class="hero">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            YOUR PERSONALIZED JOURNEY
+                        </p>
+
+                        <h2>
+                            Learn smarter.<br>
+                            Become ready faster.
+                        </h2>
+
+                        <p>
+                            Your AI onboarding coach adapts your learning
+                            path based on what you already know.
+                        </p>
+
+                        <button class="primary-btn"
+                                onclick="showSection('learn')">
+                            Continue Learning →
+                        </button>
+
+                    </div>
+
+                    <div class="hero-orb">
+
+                        <div class="orb-inner">
+                            AI
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STAT CARDS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            OVERALL READINESS
+                        </span>
+
+                        <div class="stat-value">
+                            <span id="readiness">0</span>%
+                        </div>
+
+                        <div class="progress-bar">
+                            <div id="readiness-bar"
+                                 class="progress-fill">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            TOPICS COMPLETED
+                        </span>
+
+                        <div class="stat-value">
+                            <span id="completed">0</span>
+                        </div>
+
+                        <span class="stat-sub">
+                            Knowledge areas assessed
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card warning-card">
+
+                        <span class="stat-label">
+                            NEEDS ATTENTION
+                        </span>
+
+                        <div class="stat-value">
+                            <span id="weak-count">0</span>
+                        </div>
+
+                        <span class="stat-sub">
+                            Topics needing reinforcement
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LEARNING AREA -->
+
+                <div class="content-grid">
+
+                    <div class="card current-learning">
+
+                        <div class="card-header">
+
+                            <div>
+                                <span class="section-label">
+                                    CURRENT FOCUS
+                                </span>
+
+                                <h3 id="current-topic">
+                                    Start your first assessment
+                                </h3>
+                            </div>
+
+                            <span class="topic-icon">
+                                ◈
+                            </span>
+
+                        </div>
+
+                        <p id="current-description">
+                            Complete an assessment to let the AI
+                            identify your strongest and weakest areas.
+                        </p>
+
+                        <button class="secondary-btn"
+                                onclick="showSection('quiz')">
+                            Take Assessment →
+                        </button>
+
+                    </div>
+
+
+                    <div class="card recommendation">
+
+                        <div class="card-header">
+
+                            <div>
+                                <span class="section-label">
+                                    AI RECOMMENDATION
+                                </span>
+
+                                <h3 id="recommended-topic">
+                                    Waiting for assessment
+                                </h3>
+                            </div>
+
+                            <div class="sparkle">
+                                ✦
+                            </div>
+
+                        </div>
+
+                        <div class="reason-box">
+
+                            <span>WHY THIS TOPIC?</span>
+
+                            <p id="recommendation-reason">
+                                Complete a quiz and the adaptive
+                                engine will explain your next step.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- LEARN SECTION -->
+
+            <section id="learn" class="section">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        KNOWLEDGE COACH
+                    </p>
+
+                    <h2>
+                        Learn from company SOPs
+                    </h2>
+
+                    <p>
+                        Ask about a company topic and receive an
+                        explanation grounded only in the provided SOPs.
+                    </p>
+
+                </div>
+
+                <div class="learn-box">
+
+                    <input
+                        id="learn-topic"
+                        type="text"
+                        placeholder="Example: equipment safety"
+                    >
+
+                    <button class="primary-btn"
+                            onclick="learnTopic()">
+                        Ask AI →
+                    </button>
+
+                </div>
+
+                <div id="learn-result" class="card result-card">
+
+                    <span class="section-label">
+                        AI EXPLANATION
+                    </span>
+
+                    <h3>
+                        Your explanation will appear here
+                    </h3>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUIZ SECTION -->
+
+            <section id="quiz" class="section">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        ADAPTIVE ASSESSMENT
+                    </p>
+
+                    <h2>
+                        Test your knowledge
+                    </h2>
+
+                    <p>
+                        Questions are generated from the selected
+                        company SOP.
+                    </p>
+
+                </div>
+
+                <div class="quiz-selector">
+
+                    <input
+                        id="quiz-topic"
+                        type="text"
+                        placeholder="Example: equipment safety"
+                    >
+
+                    <button class="primary-btn"
+                            onclick="loadQuiz()">
+                        Generate Quiz →
+                    </button>
+
+                </div>
+
+                <div id="quiz-container"></div>
+
+            </section>
+
+
+            <!-- PROGRESS SECTION -->
+
+            <section id="progress" class="section">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        LEARNING ANALYTICS
+                    </p>
+
+                    <h2>
+                        Your progress
+                    </h2>
+
+                    <p>
+                        A transparent view of your onboarding journey.
+                    </p>
+
+                </div>
+
+                <div id="progress-container"
+                     class="progress-list">
+
+                    <div class="card">
+                        Loading progress...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

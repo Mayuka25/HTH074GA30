@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from sop_loader import search_sops
 from gemini_service import generate_grounded_explanation
 from quiz_service import generate_quiz
@@ -11,6 +11,28 @@ from progress_tracker import (
 )
 
 app = Flask(__name__)
+@app.route("/dashboard")
+def dashboard():
+    return send_from_directory(
+        "../frontend",
+        "index.html"
+    )
+
+@app.route("/style.css")
+def style():
+    return send_from_directory(
+        "../frontend",
+        "style.css"
+    )
+
+
+@app.route("/script.js")
+def script():
+    return send_from_directory(
+        "../frontend",
+        "script.js"
+    )
+
 
 
 @app.route("/")
