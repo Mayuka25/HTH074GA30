@@ -3,6 +3,13 @@ from sop_loader import search_sops
 from gemini_service import generate_grounded_explanation
 from quiz_service import generate_quiz
 from adaptive_engine import calculate_score, recommend_next_topic
+from progress_tracker import (
+    save_progress,
+    get_progress,
+    calculate_readiness,
+    get_weak_areas
+)
+
 app = Flask(__name__)
 
 
@@ -95,6 +102,7 @@ def quiz():
         "quiz": quiz_data
     })
 
+
 @app.route("/api/submit-quiz", methods=["POST"])
 def submit_quiz():
 
@@ -119,20 +127,50 @@ def submit_quiz():
             "error": "Number of answers must match number of questions"
         }), 400
 
+    # Calculate quiz score
     score = calculate_score(
         questions,
         answers
     )
 
+    # Decide what the employee should learn next
     recommendation = recommend_next_topic(
         topic,
         score
     )
 
+    # Identify employee
+    employee = data.get("employee", "Alex")
+
+    # Save employee progress
+    save_progress(
+        employee,
+        topic,
+        score,
+        recommendation["status"]
+    )
+
+    # Return complete progress information
     return jsonify({
+        "employee": employee,
         "topic": topic,
         "score": score,
-        "recommendation": recommendation
+        "recommendation": recommendation,
+        "readiness": calculate_readiness(employee),
+        "weak_areas": get_weak_areas(employee),
+        "progress": get_progress(employee)
+    })
+
+@app.route("/api/progress")
+def progress():
+
+    employee = request.args.get("employee", "Alex").strip()
+
+    return jsonify({
+        "employee": employee,
+        "readiness": calculate_readiness(employee),
+        "weak_areas": get_weak_areas(employee),
+        "progress": get_progress(employee)
     })
 
 
